@@ -1,0 +1,202 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+.background {
+  background-color: #7a65d8;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.loading_text:hover {
+  cursor: pointer;
+}
+
+.loading_text {
+  color: #efeeff;
+  font-size: 3vw;
+  font-family: "Segoe UI";
+  position: absolute;
+  opacity: 0;
+}
+
+.percentage {
+  color: #efeeff;
+  font-size: 2.5vw;
+  font-family: "Segoe UI";
+  position: absolute;
+  opacity: 0;
+  margin-top: 2vw;
+}
+
+.description {
+  color: #efeeff;
+  margin-top: 1vw;
+  font-size: 1.5vw;
+  position: absolute;
+  opacity: 0;
+  font-family: "Segoe UI";
+}
+
+.percentage:hover {
+  cursor: pointer;
+}
+
+section {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.loader {
+  border: 0.8vw solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 0.8vw solid #3498db;
+  width: 4vw;
+  height: 4vw;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  position: absolute;
+  opacity: 0;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+h1 {
+  z-index: 1;
+}
+
+.cancel_btn {
+  z-index: 1;
+}
+
+.ui {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.input_text::-webkit-scrollbar {
+  width: 12px;
+  border-radius: 10px;
+  background-color: #5640b7;
+}
+
+.input_text::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #efeeff;
+ }
+
+.input_text {
+  width: 80%;
+  height: 95%;
+  resize: none;
+  position: absolute;
+  border-width: 3px;
+  border-color: #752ac9;
+  background-color: #7a65d8;
+  color: #efeeff;
+  font-size: 15px;
+  cursor: url(cursor.png), auto;
+}
+
+.input_text:hover {
+  cursor: url(cursor.png), auto;
+}
+
+.saved_indicator {
+  position: absolute;
+  padding-top: 2vw;
+  padding-left: 3vw;
+  padding-bottom: 1.5vw;
+  padding-right: 1.5vw;
+  background-color: #752ac9;
+  border-top-left-radius: 5vw;
+  bottom: 0;
+  right: 0;
+}
+
+.saved_indicator_span {
+  font-family: "Segoe UI";
+  font-size: 3vw;
+  color: #efeeff;
+}
+
+.not_saved_indicator {
+  position: absolute;
+  padding-top: 2vw;
+  padding-left: 3vw;
+  padding-bottom: 1.5vw;
+  padding-right: 1.5vw;
+  background-color: #752ac9;
+  border-top-left-radius: 5vw;
+  bottom: 0;
+  right: 0;
+}
+
+.not_saved_indicator_span {
+  font-family: "Segoe UI";
+  font-size: 3vw;
+  color: #efeeff;
+}
+
+.save_btn {
+  top: 1vw;
+  right: 1vw;
+  padding: 1.5vw;
+  transition: .5s;
+  font-size: 1.5vw;
+  background-color: #752ac9;
+  border: 0;
+  border-radius: 0.5vw;
+  position: absolute;
+  color: #efeeff;
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+
+.save_btn:hover {
+  cursor: pointer;
+  background-color: #3d1070;
+}
+
+
+.cancel_btn {
+  top: 1vw;
+  right: 1vw;
+  padding: 1.5vw;
+  transition: .5s;
+  font-size: 1.5vw;
+  background-color: #752ac9;
+  border: 0;
+  border-radius: 0.5vw;
+  position: absolute;
+  color: #efeeff;
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+
+.cancel_btn:hover {
+  cursor: pointer;
+  background-color: #3d1070;
+}
+
+.loader_div {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
