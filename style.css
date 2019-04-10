@@ -66,6 +66,22 @@ section {
   opacity: 0;
 }
 
+.pre_loader {
+  border: 0.8vw solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 0.8vw solid #3498db;
+  width: 4vw;
+  height: 4vw;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); }

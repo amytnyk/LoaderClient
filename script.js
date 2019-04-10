@@ -110,13 +110,15 @@ $(window).on("load", function() {
             if (responseText.last_chunk)
               showSaved();
           } else { // Very bad
+            sent_chunks = chunks_len;
             showNotSaved();
           }
         },
 
-        timeout: 3000,
+        timeout: 20000,
 
         error: function() {
+          sent_chunks = chunks_len;
           showNotSaved();
         }
       });
@@ -147,6 +149,7 @@ $(window).on("load", function() {
         let j_obj = JSON.parse(responseText);
         if (j_obj.state == "Loading") {
           if (first_try) {
+            $(".pre_loader").hide();
             $(".loader_div").show();
             animate();
           }
@@ -154,6 +157,7 @@ $(window).on("load", function() {
           $(".description").html(j_obj.description);
         }
         else if (j_obj.state == "Loaded") {
+          $(".pre_loader").hide();
           $(".loader_div").hide();
           $(".ui").show();
           $(".input_text").val(j_obj.data);
