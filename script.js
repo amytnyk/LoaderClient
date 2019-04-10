@@ -56,6 +56,7 @@ function showNotSaved() {
 
 const request_frequency = 500;
 const url = "http://localhost:8000/";
+const chunk_size = 2000;
 let request_interval = null;
 let first_try = true;
 let timeout;
@@ -79,38 +80,48 @@ $(window).on("load", function() {
 
   // Handle save_btn
   $(".save_btn").on("click", function() {
-    $.ajax({
-      type: 'POST',
-      url: url,
-      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-      crossdomain: true,
-      dataType: "jsonp",
-      data: {
-        action: "save",
-        text: $(".input_text").val()
-      },
-      xhrFields: {
-        withCredentials: false
-      },
+    let str = $(".input_text").val();
+    let chunks_len = parseInt(str.length % chunk_size == 0 ? str.length / chunk_size : str.length / chunk_size + 1);
+    let sent_chunks = 0;
 
-      headers: {
-      },
+    while (sent_chunks < chunks_len) {
+      $.ajax({
+        type: 'POST',
+        url: url,
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        crossdomain: true,
+        dataType: "jsonp",
+        data: {
+          action: "save",
+          text: str.substr(sent_chunks * chunk_size, chunk_size),
+          chunk: sent_chunks == chunks_len - 1 ? "last" : "middle"
+        },
+        xhrFields: {
+          withCredentials: false
+        },
 
-      success: function(responseText) {
-        console.log(responseText);
-        if (responseText == "Saved") { // All is OK
-          showSaved();
-        } else { // Very bad
+        headers: {
+        },
+
+        success: function(responseText) {
+          console.log(chunks_len);
+          console.log(responseText);
+          if (responseText.state == "Saved") { // All is OK
+            if (responseText.last_chunk)
+              showSaved();
+          } else { // Very bad
+            showNotSaved();
+          }
+        },
+
+        timeout: 3000,
+
+        error: function() {
           showNotSaved();
         }
-      },
-
-      timeout: 3000,
-
-      error: function() {
-        showNotSaved();
-      }
-    });
+      });
+      sent_chunks++;
+    }
   });
   //
 
