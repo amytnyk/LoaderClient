@@ -62,7 +62,7 @@ function showNotSaved() {
 
 const request_frequency = 500;
 const url = "http://localhost:8000/";
-const chunk_size = 20000;
+const chunk_size = 5000;
 let request_interval = null;
 let first_try = true;
 let timeout;
