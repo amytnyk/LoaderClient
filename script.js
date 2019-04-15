@@ -1,14 +1,20 @@
+function parseIntMod(v) {
+	if (v == "")
+		return 0;
+	return parseInt(v);
+}
+
 $.fn.center = function () {
-  this.css('left', $(window).width()/2 - ($(this).width() + parseInt($(this).css("padding-left")) + parseInt($(this).css("border-width")) + parseInt($(this).css("padding-right")))/2);
+  this.css('left', $(window).width()/2 - ($(this).width() + parseIntMod($(this).css("padding-left")) + parseIntMod($(this).css("border-width")) + parseIntMod($(this).css("padding-right")))/2);
 };
 
 function resize() {
   $('.loading_text').center();
   $('.percentage').center();
   $('.loader').center();
-  $(".loading_text").css("top", $(".loader").css("top", "30%").position().top + $(".loader").height() + parseInt($(".loader").css("border-width")) + parseInt($(".loader").css('marginTop')) * 2);
-  $(".percentage").css("top", $(".loading_text").position().top + $(".loading_text").height() + parseInt($(".percentage").css("margin-top")));
-  $(".description").css("top", $(".percentage").position().top + $(".percentage").height() + parseInt($(".description").css("margin-top")));
+  $(".loading_text").css("top", $(".loader").css("top", "30%").position().top + $(".loader").height() + parseIntMod($(".loader").css("border-width")) + parseIntMod($(".loader").css('marginTop')) * 2);
+  $(".percentage").css("top", $(".loading_text").position().top + $(".loading_text").height() + parseIntMod($(".percentage").css("margin-top")));
+  $(".description").css("top", $(".percentage").position().top + $(".percentage").height() + parseIntMod($(".description").css("margin-top")));
 }
 
 function createCORSRequest(method, url) {
@@ -56,7 +62,7 @@ function showNotSaved() {
 
 const request_frequency = 500;
 const url = "http://localhost:8000/";
-const chunk_size = 2000;
+const chunk_size = 20000;
 let request_interval = null;
 let first_try = true;
 let timeout;
